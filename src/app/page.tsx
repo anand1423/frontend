@@ -48,18 +48,18 @@ export default function Home() {
   };
 
   const handlePriceFilter = (min: number | null, max: number | null) => {
-    if (!min && !max) {
-      setFilteredProducts(products);
-    } else {
-      setFilteredProducts(
-        products.filter((product) => {
-          if (min && max) return product.price >= min && product.price <= max;
-          if (min) return product.price >= min;
-          if (max) return product.price <= max;
-          return true;
-        })
-      );
-    }
+    // Convert product price to a number safely
+    setFilteredProducts(
+      products.filter((product) => {
+        const price = Number(product.price);
+        if (min === null && max === null) return true;
+        if (min !== null && max !== null) return price >= min && price <= max;
+        if (min !== null) return price >= min;
+        if (max !== null) return price <= max;
+
+        return true; // Default case (should never be reached)
+      })
+    );
   };
 
   return (

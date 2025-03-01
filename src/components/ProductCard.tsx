@@ -18,7 +18,9 @@ export default function ProductCard({ product, onDelete }: ProductCardProps) {
   return (
     <div className="border rounded-lg p-4 shadow-sm">
       <h3 className="text-lg font-semibold">{product.name}</h3>
-      <p className="text-green-600 font-bold">${product.price.toFixed(2)}</p>
+      <p className="text-green-600 font-bold">
+        ${Number(product?.price).toFixed(2)}
+      </p>
       {product.description && (
         <p className="text-gray-600 mt-2">{product.description}</p>
       )}
