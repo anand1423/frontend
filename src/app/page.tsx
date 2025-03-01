@@ -48,7 +48,6 @@ export default function Home() {
   };
 
   const handlePriceFilter = (min: number | null, max: number | null) => {
-    // Convert product price to a number safely
     setFilteredProducts(
       products.filter((product) => {
         const price = Number(product.price);
@@ -56,8 +55,7 @@ export default function Home() {
         if (min !== null && max !== null) return price >= min && price <= max;
         if (min !== null) return price >= min;
         if (max !== null) return price <= max;
-
-        return true; // Default case (should never be reached)
+        return true;
       })
     );
   };
